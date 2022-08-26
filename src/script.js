@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './style.css';
+import {useRef, useEffect} from 'react';
+import Logo from '../img/logo.jpg'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -21,18 +23,40 @@ const App = () => {
     )
 }
 
-const NavBar = () => {
+export default function NavBar() {
+  const contactButtonRef = useRef(null);
+  const projectsButtonRef = useRef(null);
+  const homeButtonRef = useRef(null);
+
+  useEffect(() => {
+    const contactButton = contactButtonRef.current;
+    const projectsButton = projectsButtonRef.current;
+    const homeButton = homeButtonRef.current;
+
+    homeButton.addEventListener('click', () => {
+      window.scrollTo(0, document.body.scrollTop);
+    });
+    contactButton.addEventListener('click', () => {
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+    projectsButton.addEventListener('click', () => {
+        window.scrollTo(0, projectsButtonRef.current.offsetTop + 500);
+    });
+  });
     return (
         <div className = 'nav-bar-wrapper'>
-            <div className = 'nav-bar-header'>Jacob Anderson</div>
+            <div ref = {homeButtonRef} className = 'nav-bar-header'>
+              <img src = {Logo} className = 'nav-logo'/>
+              <div>Jacob Anderson</div>
+            </div>
             <div className = 'nav-list-wrapper'>
-                <div className = 'nav-projects-button nav-button'>Projects</div>
+                <div ref = {projectsButtonRef} className = 'nav-projects-button nav-button'>Projects</div>
                 <div className = 'nav-about-button nav-button'>About Me</div>
-                <div className = 'nav-contact-button nav-button'>Contact</div>
+                <div ref = {contactButtonRef} className = 'nav-contact-button nav-button'>Contact</div>
             </div>
         </div>
     )
-}
+};
 const HomeHeader = () => {
     return (
       <div className = 'home-header-wrapper'>

@@ -8,7 +8,7 @@
 
 
 @mixin navBarWidth {
-    width: 12vw;
+    width: 150px;
 }
 @mixin bodyWidth {
     width: 88vw;
@@ -24,7 +24,8 @@
 }
 .body {
     @include bodyWidth();
-    background-color: grey;
+    background-image: linear-gradient(to right ,rgb(70, 100, 160), rgb(60,90, 150));
+    background-image: linear-gradient(rgb(70, 100, 160), rgb(60,90, 150));
 }
 
 
@@ -37,14 +38,22 @@
     height: 100vh;
     background-color: rgb(60,60,60);
 }
+.nav-logo {
+    width: 75%;
+}
 .nav-bar-header {
     display: flex;
+    flex-direction: column;
+    gap: 10px;
     justify-content: center;
     align-items: center;
     height: 30vh;
     width: 100%;
     font-size: 1.2rem;
     background-color: rgb(25,25,25);
+}
+.nav-bar-header:hover {
+    cursor: pointer;
 }
 .nav-list-wrapper {
     width: 100%;
@@ -67,15 +76,32 @@
     background-color: rgb(50,50,50);
 }
 
-
-.home-header-title {
+.home-header-wrapper {
     height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.home-header-title {
     width: min-content;
     white-space: nowrap;
-    position: relative;
-    left: 5vw;
-    top: 10vh;
+    position: absolute;
+    left: 230px;
+    top: 80px;
     font-size: 5rem;
+}
+.header-tag {
+    opacity: 35%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.opening-header-tag {
+    position: absolute;
+    top: 115px;
+    left: 190px;
+}
+.closing-header-tag {
+    position: absolute;
+    top: 305px;
+    left: 785px;
 }
 
 
@@ -92,14 +118,13 @@
     justify-self: center;
     height: 20vw;
     width: 37vw;
-    border: 1px solid white;
     background-color: grey;
     border-radius: 10px;
 }
 .home-project:hover {
     height: 20.8vw;
     width: 37.8vw;
-    border: 1px solid black;
+    border: 1px solid white;
     cursor: pointer;
 }
 
@@ -113,7 +138,7 @@
     margin-top: 15vh;
     margin-bottom: 10vh;
     padding: 10px;
-    border: 1px solid whitesmoke;
+    background-color: rgb(25,25,25,.4);
 }
 .home-contact-form {
     display: grid;
